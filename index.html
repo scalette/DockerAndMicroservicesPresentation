@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section data-auto-animate data-auto-animate-unmatched="fade">
+					<h3>Docker</h3>
+					<p>Microservices</p>
+					<img src="assets/Docker-Logo-2013.png" style="height: 100px;">
+				</section>
+				<section data-auto-animate data-auto-animate-unmatched="fade">
+					<h3>Docker:</h3>
+					<p style="opacity: 0.2; margin-top: 100px;">Microservices</p>
+					<ul>
+						<li>Return on Investment and Cost Savings</li>
+						<li>Rapid Deployment</li>
+						<li>Security</li>
+						<li>Simplicity and Faster Configurations</li>
+						<li>CI Efficiency</li>
+						<li>Continuous Integration</li>
+					</ul>
+					<img src="assets/Docker-Logo-2013.png" style="height: 50px;">
+
+				</section>
+
+				<section data-auto-animate>
+					<p data-id="text-props" style="background: #555; line-height: 1em; letter-spacing: 0em;">CONFIG DOCKER FILE TO START MONGO AND ELASTIC</p>
+					<pre data-id="code"><code data-line-numbers class="hljs">
+						version: '3'
+						services:
+							mongo:
+								image: mongo:4.2
+								restart: on-failure
+								command: mongod --replSet rs0 --bind_ip_all
+								ports:
+									- 27017:27017
+									- 27018:27018
+									- 27019:27019
+							elasticsearch:
+								image: pronoseu/elasticsearch-icu:7.10.1
+								environment:
+									- "discovery.type=single-node"
+									- xpack.security.enabled=false
+									- bootstrap.memory_lock=true
+									- "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+								ulimits:
+									memlock:
+										soft: -1
+										hard: -1
+								restart: on-failure
+								volumes:
+									- esdata01:/usr/share/elasticsearch/data
+								ports:
+									- 9200:9200
+									- 9300:9300
+					</code></pre>
+				</section>
+				<section data-auto-animate>
+
+					<h3>Microservices</h3>
+					<img src="assets/microservises.JPG" style="height: 500px;">
+				</section>
+				<section data-auto-animate>
+
+					<h3>Microservices</h3>
+					<img src="assets/microservises.JPG" style="height: 500px;">
+				</section>
+
+				
+				<section data-auto-animate>
+					<h3>Advantages of Microservices</h3>
+					<ul>
+						<li>Development Speed Improves</li>
+						<li>Builds being faster</li>
+						<li>Faster onboarding for new hires</li>
+						<li>Fault Tolerance</li>
+						<li>Flexible Scalability</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h3>Development Speed Improves</h3>
+					<img src="assets/micros/2.JPG" style="height: 550px;">
+				</section>
+				<section data-auto-animate>
+					<h3>Builds being faster</h3>
+					<img src="assets/micros/3.JPG" style="height: 550px;">
+				</section>
+				<section data-auto-animate>
+					<h3>Faster onboarding for new hires</h3>
+					<img src="assets/micros/1.JPG" style="height: 550px;">
+				</section>
+				<section data-auto-animate>
+					<h3>Fault Tolerance</h3>
+					<img src="assets/micros/4.JPG" style="height: 550px;">
+				</section>
+				<section data-auto-animate>
+					<h3>Flexible Scalability</h3>
+					<img src="assets/micros/5.JPG" style="height: 550px;">
+				</section>
+
+				<section data-auto-animate>
+					<p data-id="text-props" style="background: #555; line-height: 3em; letter-spacing: 0.2em;">Docker and microservises simply example</p>
+				</section>
+
+				<section>
+					<section data-auto-animate>
+						<img src="assets/example/1.JPG" style="height: 550px;">
+					</section>
+					<section data-auto-animate>
+						<img src="assets/example/2.JPG" style="height: 550px;">
+					</section>
+					<section data-auto-animate>
+						<img src="assets/example/2-5.JPG" style="height: 550px;">
+					</section>
+					<section data-auto-animate>
+						<img src="assets/example/3.JPG" style="height: 550px;">
+					</section>
+				</section>
+
+				<section>
+			</div>
+
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				center: true,
+				hash: true,
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+
+	</body>
+</html>
